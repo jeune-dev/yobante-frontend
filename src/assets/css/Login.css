@@ -25,6 +25,11 @@
   --font:        'DM Sans', sans-serif;
 }
 
+.db-chip.active {
+  background: #eab308 !important;
+  border-color: #eab308 !important;
+}
+
 /* ── Page wrapper ── */
 .login-page {
   font-family: var(--font);

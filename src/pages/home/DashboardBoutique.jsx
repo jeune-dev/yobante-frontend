@@ -4,8 +4,12 @@ import { Helmet } from "react-helmet";
 import "../../assets/css/Dashboard.css";
 import Topbar from "../../components/layout/Topbar.jsx";
 import { PAGES_BOUTIQUE } from "../../data/dashboardData.jsx";
-import LOGO from "../../assets/images/logo1.png"; // adapte l'extension
-
+import LOGO from "../../assets/images/logo1.png";
+import VueEnsembleBoutique from "../../components/panels/Boutique/VueEnsembleBoutique.jsx";
+import ProduitsPanel from "../../components/panels/Boutique/ProduitsPanel.jsx";
+import CommandesPanel from "../../components/panels/Boutique/CommandesPanel.jsx";
+import ClientsPanel from "../../components/panels/Boutique/ClientsPanel.jsx";
+import AdminsPanel from "../../components/panels/Boutique/AdminsPanel.jsx";
 
 export default function DashboardBoutique() {
   const [page, setPage] = useState("overview");
@@ -62,7 +66,7 @@ export default function DashboardBoutique() {
   ];
 
   return (
-     <div className="db-app boutique">
+    <div className="db-app boutique">
       <Helmet>
         <title>Yobante Boutique | Dashboard</title>
         <link rel="icon" type="image/png" href={LOGO} />
@@ -164,68 +168,20 @@ export default function DashboardBoutique() {
         />
 
         <div className="db-content">
-         <div className={`db-panel${page === "overview" ? " active" : ""}`}>
-  <div className="db-stats-grid">
-
-    <div className="db-stat-card">
-      <div className="db-stat-icon blue">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M9 11l3 3L22 4"/>
-          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-        </svg>
-      </div>
-      <div className="db-stat-value">0</div>
-      <div className="db-stat-label">Commandes du jour</div>
-    </div>
-
-    <div className="db-stat-card">
-      <div className="db-stat-icon gold">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 0 1-8 0"/>
-        </svg>
-      </div>
-      <div className="db-stat-value">0</div>
-      <div className="db-stat-label">Produits en attente</div>
-    </div>
-
-    <div className="db-stat-card">
-      <div className="db-stat-icon green">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="9" cy="7" r="4"/>
-          <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
-          <path d="M16 3.13a4 4 0 0 1 0 7.75M21 21v-2a4 4 0 0 0-3-3.87"/>
-        </svg>
-      </div>
-      <div className="db-stat-value">0</div>
-      <div className="db-stat-label">Clients total</div>
-    </div>
-
-    <div className="db-stat-card">
-      <div className="db-stat-icon red">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <line x1="12" y1="1" x2="12" y2="23"/>
-          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-        </svg>
-      </div>
-      <div className="db-stat-value">0 FCFA</div>
-      <div className="db-stat-label">Revenus total</div>
-    </div>
-
-  </div>
-</div>
+          <div className={`db-panel${page === "overview" ? " active" : ""}`}>
+            <VueEnsembleBoutique />
+          </div>
           <div className={`db-panel${page === "produits" ? " active" : ""}`}>
-            <PlaceholderBoutique title="Produits" description="Validation des produits soumis, gestion du catalogue." />
+            <ProduitsPanel />
           </div>
           <div className={`db-panel${page === "commandes" ? " active" : ""}`}>
-            <PlaceholderBoutique title="Commandes" description="Gestion des commandes classiques et commandes avec expédition Sénégal (code couleur vert/rouge)." />
+            <CommandesPanel />
           </div>
           <div className={`db-panel${page === "clients" ? " active" : ""}`}>
-            <PlaceholderBoutique title="Clients Boutique" description="Liste des clients de la boutique e-commerce." />
+            <ClientsPanel />
           </div>
           <div className={`db-panel${page === "admins" ? " active" : ""}`}>
-            <PlaceholderBoutique title="Administrateurs" description="Gestion des comptes administrateurs." />
+            <AdminsPanel />
           </div>
         </div>
       </div>
@@ -237,30 +193,6 @@ export default function DashboardBoutique() {
           </svg>
         </div>
         {toast.msg}
-      </div>
-    </div>
-  );
-}
-
-function PlaceholderBoutique({ title, description }) {
-  return (
-    <div style={{
-      display: "flex", flexDirection: "column", alignItems: "center",
-      justifyContent: "center", minHeight: 400, gap: "1rem", opacity: 0.6,
-    }}>
-      <div style={{
-        width: 60, height: 60, borderRadius: 16, background: "#e67e2220",
-        display: "flex", alignItems: "center", justifyContent: "center",
-      }}>
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e67e22" strokeWidth="1.5">
-          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 0 1-8 0"/>
-        </svg>
-      </div>
-      <div style={{ textAlign: "center" }}>
-        <div style={{ fontWeight: 700, fontSize: "1.1rem", color: "#111", marginBottom: 6 }}>{title}</div>
-        <div style={{ fontSize: "0.88rem", color: "#666", maxWidth: 360 }}>{description}</div>
       </div>
     </div>
   );

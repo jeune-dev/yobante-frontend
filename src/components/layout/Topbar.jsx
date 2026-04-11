@@ -5,7 +5,6 @@ export default function Topbar({ pageTitle, pageSub }) {
         <div className="db-page-title">{pageTitle}</div>
         <div className="db-page-sub">{pageSub}</div>
       </div>
-     
     </header>
   );
 }

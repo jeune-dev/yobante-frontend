@@ -1849,7 +1849,6 @@ tbody tr:hover td { background: var(--gray); }
   letter-spacing: 0.03em;
 }
 
-/* ── Couleurs Boutique (jaune) ── */
 .boutique .db-nav-item.active {
   background: rgba(234, 179, 8, 0.08);
   color: #eab308;
@@ -1860,19 +1859,12 @@ tbody tr:hover td { background: var(--gray); }
   background: #eab308;
 }
 
-.boutique .db-admin-ava,
-.boutique .db-admin-entry-ava {
-  background: #a16207;
-}
-
 .boutique .db-admin-role {
   color: #eab308;
 }
 
-.boutique .db-toast {
-  border-left-color: #eab308;
-}
-
-.boutique .db-toast-icon {
+.boutique .db-chip.active {
   background: #eab308;
+  border-color: #eab308;
+  color: #fff;
 }
